@@ -37,7 +37,8 @@ const BlurImage = (props: BlurImageProps) => {
       alt={alt}
       className={cn(
         'yu-blur-image',
-        lazy && pending && !failed && 'yu-blur-image--pending',
+        lazy && pending && !failed &&
+          'yu-blur-image--pending motion-reduce:filter-none motion-reduce:opacity-100',
         failed && 'yu-blur-image--failed',
         className,
         imageClassName

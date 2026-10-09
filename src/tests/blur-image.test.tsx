@@ -1,7 +1,11 @@
-import { fireEvent, render } from '@testing-library/react'
+/* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text --
+   The mock replaces next/image with a plain img on purpose. */
+import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-const onNextImage = vi.fn((props: Record<string, unknown>) => <img data-testid="next-image" {...props} />)
+const onNextImage = vi.hoisted(() =>
+  vi.fn((props: Record<string, unknown>) => <img data-testid="next-image" {...props} />)
+)
 
 vi.mock('next/image', () => ({ default: onNextImage }))
 

@@ -114,10 +114,10 @@ describe('shared YuTheme interaction invariants', () => {
     expect(source).not.toContain('shadow-[')
     expect(readSource('sheet.tsx')).not.toMatch(/duration-(300|500)/)
     expect(readSource('sheet.tsx')).toContain('var(--duration-sheet)')
-    const presetSource = readFileSync(
-      path.resolve(process.cwd(), 'packages/ui/styles/preset.css'),
+    const siteAddonsSource = readFileSync(
+      path.resolve(process.cwd(), 'styles/site.css'),
       'utf8'
     )
-    expect(presetSource).toContain('--duration-sheet:')
+    expect(siteAddonsSource).toContain('--duration-sheet:')
   })
 })
