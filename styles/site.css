@@ -61,6 +61,7 @@
   --color-status-agent-soft: var(--status-agent-soft);
   --color-status-info: var(--status-info);
   --color-status-info-soft: var(--status-info-soft);
+  --color-status-warning: var(--status-warning);
   --color-status-danger: var(--status-danger);
   --color-status-danger-soft: var(--status-danger-soft);
 
@@ -431,6 +432,7 @@
     --status-info-hover: var(--accent-cyan-hover);
     --status-info-soft: var(--accent-cyan-soft);
     --status-info-border: var(--accent-cyan-border);
+    --status-warning: var(--accent-amber);
     --status-danger: var(--accent-red);
     --status-danger-hover: var(--accent-red-hover);
     --status-danger-soft: var(--accent-red-soft);

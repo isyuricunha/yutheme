@@ -1,5 +1,11 @@
 # @isyuricunha/yutheme
 
+## 0.1.3
+
+### Added
+
+- `site` entry: `--status-warning` (amber) and the `--color-status-warning` Tailwind bridge, so the `bg-status-warning` utility used by consumers actually resolves. The original preset never defined this token; tint follows the validated 14% pattern only for backgrounds that declare it, and this one is the plain solid role.
+
 ## 0.1.2
 
 First publish executed by the CI pipeline (tag-triggered, OIDC trusted publishing), which validates the GitLab trusted publisher configuration.
