@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { createContext, use, useCallback, useEffect, useMemo, useState } from 'react'

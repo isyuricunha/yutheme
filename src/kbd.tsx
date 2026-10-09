@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 
 /**
  * heroui (MIT License)

@@ -1,7 +1,7 @@
 import type { VariantProps } from 'cva'
 
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { createContext, use, useMemo } from 'react'
 
 import { toggleVariants } from './toggle'

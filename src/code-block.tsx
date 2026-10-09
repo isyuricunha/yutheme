@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import mergeRefs from 'merge-refs'
 import { createElement, useEffect, useRef, useState } from 'react'

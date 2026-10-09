@@ -1,6 +1,6 @@
 import type { DialogProps } from '@radix-ui/react-dialog'
 
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { Command as CommandPrimitive } from 'cmdk'
 
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './dialog'

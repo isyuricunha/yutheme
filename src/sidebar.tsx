@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { cva } from 'cva'
 import { PanelLeftIcon } from 'lucide-react'
 import * as React from 'react'

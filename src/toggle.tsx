@@ -1,5 +1,5 @@
 import * as TogglePrimitive from '@radix-ui/react-toggle'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { cva, type VariantProps } from 'cva'
 
 const toggleVariants = cva({

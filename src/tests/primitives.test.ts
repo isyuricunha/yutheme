@@ -9,7 +9,7 @@ import { Link } from '../link'
 import { SelectTrigger } from '../select'
 
 const readSource = (file: string) =>
-  readFileSync(path.resolve(process.cwd(), 'packages/ui/src', file), 'utf8')
+  readFileSync(path.resolve(process.cwd(), 'src', file), 'utf8')
 
 describe('Button pending state', () => {
   it('remains disabled when pending even when disabled is explicitly false', () => {

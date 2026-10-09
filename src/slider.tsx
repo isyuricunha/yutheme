@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from '@ark-ui/react'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 
 const Slider = SliderPrimitive.Root
 const SliderMarkerGroup = SliderPrimitive.MarkerGroup

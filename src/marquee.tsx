@@ -1,4 +1,4 @@
-import { cn, range } from '@isyuricunha/utils'
+import { cn, range } from './cn'
 
 type MarqueeProps = {
   children: React.ReactNode

@@ -1,5 +1,5 @@
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 
 type SeparatorProps = React.ComponentProps<typeof SeparatorPrimitive.Root>
 

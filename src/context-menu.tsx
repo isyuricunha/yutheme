@@ -1,5 +1,5 @@
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { CheckIcon, ChevronRightIcon, DotIcon } from 'lucide-react'
 
 type ContextMenuProps = React.ComponentProps<typeof ContextMenuPrimitive.Root>

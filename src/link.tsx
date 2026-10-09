@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { cva, type VariantProps } from 'cva'
 import NextLink from 'next/link'
 

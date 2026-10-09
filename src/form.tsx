@@ -1,7 +1,7 @@
 import type * as LabelPrimitive from '@radix-ui/react-label'
 
 import { Slot } from '@radix-ui/react-slot'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { createContext, use, useId, useMemo } from 'react'
 import {
   Controller,

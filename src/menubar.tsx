@@ -1,5 +1,5 @@
 import * as MenubarPrimitive from '@radix-ui/react-menubar'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { CheckIcon, ChevronRightIcon, DotIcon } from 'lucide-react'
 
 const MenubarMenu: typeof MenubarPrimitive.Menu = MenubarPrimitive.Menu

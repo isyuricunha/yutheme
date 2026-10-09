@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import type * as React from 'react'
 import { GripVerticalIcon } from 'lucide-react'
 import { Group, Panel, Separator } from 'react-resizable-panels'

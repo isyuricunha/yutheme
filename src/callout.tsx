@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { AlertOctagonIcon, AlertTriangleIcon, InfoIcon } from 'lucide-react'
 
 type CalloutProps = {

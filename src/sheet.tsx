@@ -1,5 +1,5 @@
 import * as SheetPrimitive from '@radix-ui/react-dialog'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { cva, type VariantProps } from 'cva'
 import { XIcon } from 'lucide-react'
 

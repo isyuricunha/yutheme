@@ -1,5 +1,5 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 import { ChevronDownIcon } from 'lucide-react'
 
 const Accordion = AccordionPrimitive.Root

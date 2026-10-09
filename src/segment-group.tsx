@@ -1,5 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from '@ark-ui/react'
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 
 type SegmentGroupProps = React.ComponentProps<typeof SegmentGroupPrimitive.Root>
 

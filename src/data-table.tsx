@@ -1,5 +1,5 @@
 import { type Column, flexRender, type Table as TanstackTable } from '@tanstack/react-table'
-import { cn, range } from '@isyuricunha/utils'
+import { cn, range } from './cn'
 import { createListCollection, type ListCollection } from '@ark-ui/react/combobox'
 import {
   ArrowDownIcon,

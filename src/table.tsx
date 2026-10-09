@@ -1,4 +1,4 @@
-import { cn } from '@isyuricunha/utils'
+import { cn } from './cn'
 
 type TableProps = React.ComponentProps<'table'>
 
