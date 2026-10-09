@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "YuTheme: AMOLED design system tokens, theme CSS and UI components for isyuricunha's projects",
   "license": "AGPL-3.0-only",
-  "author": "Yuri Cunha <isyuricunha@duck.com> (https://yuricunha.com)",
+  "author": "Yuri Cunha (https://yuricunha.com)",
   "homepage": "https://github.com/isyuricunha/yutheme#readme",
   "repository": {
     "type": "git",
@@ -98,50 +98,138 @@
     "vaul": "^1.1.2"
   },
   "peerDependenciesMeta": {
-    "@ark-ui/react": { "optional": true },
-    "@icons-pack/react-simple-icons": { "optional": true },
-    "@radix-ui/react-accordion": { "optional": true },
-    "@radix-ui/react-alert-dialog": { "optional": true },
-    "@radix-ui/react-aspect-ratio": { "optional": true },
-    "@radix-ui/react-avatar": { "optional": true },
-    "@radix-ui/react-checkbox": { "optional": true },
-    "@radix-ui/react-collapsible": { "optional": true },
-    "@radix-ui/react-context": { "optional": true },
-    "@radix-ui/react-context-menu": { "optional": true },
-    "@radix-ui/react-dialog": { "optional": true },
-    "@radix-ui/react-dropdown-menu": { "optional": true },
-    "@radix-ui/react-hover-card": { "optional": true },
-    "@radix-ui/react-label": { "optional": true },
-    "@radix-ui/react-menubar": { "optional": true },
-    "@radix-ui/react-navigation-menu": { "optional": true },
-    "@radix-ui/react-popover": { "optional": true },
-    "@radix-ui/react-radio-group": { "optional": true },
-    "@radix-ui/react-scroll-area": { "optional": true },
-    "@radix-ui/react-select": { "optional": true },
-    "@radix-ui/react-separator": { "optional": true },
-    "@radix-ui/react-slot": { "optional": true },
-    "@radix-ui/react-switch": { "optional": true },
-    "@radix-ui/react-tabs": { "optional": true },
-    "@radix-ui/react-toggle": { "optional": true },
-    "@radix-ui/react-toggle-group": { "optional": true },
-    "@radix-ui/react-tooltip": { "optional": true },
-    "@radix-ui/react-visually-hidden": { "optional": true },
-    "@tailwindcss/typography": { "optional": true },
-    "@tanstack/react-table": { "optional": true },
-    "cmdk": { "optional": true },
-    "cva": { "optional": true },
-    "embla-carousel-react": { "optional": true },
-    "framer-motion": { "optional": true },
-    "input-otp": { "optional": true },
-    "lucide-react": { "optional": true },
-    "merge-refs": { "optional": true },
-    "next": { "optional": true },
-    "react-hook-form": { "optional": true },
-    "react-resizable-panels": { "optional": true },
-    "react-textarea-autosize": { "optional": true },
-    "sonner": { "optional": true },
-    "tailwindcss": { "optional": true },
-    "vaul": { "optional": true }
+    "@ark-ui/react": {
+      "optional": true
+    },
+    "@icons-pack/react-simple-icons": {
+      "optional": true
+    },
+    "@radix-ui/react-accordion": {
+      "optional": true
+    },
+    "@radix-ui/react-alert-dialog": {
+      "optional": true
+    },
+    "@radix-ui/react-aspect-ratio": {
+      "optional": true
+    },
+    "@radix-ui/react-avatar": {
+      "optional": true
+    },
+    "@radix-ui/react-checkbox": {
+      "optional": true
+    },
+    "@radix-ui/react-collapsible": {
+      "optional": true
+    },
+    "@radix-ui/react-context": {
+      "optional": true
+    },
+    "@radix-ui/react-context-menu": {
+      "optional": true
+    },
+    "@radix-ui/react-dialog": {
+      "optional": true
+    },
+    "@radix-ui/react-dropdown-menu": {
+      "optional": true
+    },
+    "@radix-ui/react-hover-card": {
+      "optional": true
+    },
+    "@radix-ui/react-label": {
+      "optional": true
+    },
+    "@radix-ui/react-menubar": {
+      "optional": true
+    },
+    "@radix-ui/react-navigation-menu": {
+      "optional": true
+    },
+    "@radix-ui/react-popover": {
+      "optional": true
+    },
+    "@radix-ui/react-radio-group": {
+      "optional": true
+    },
+    "@radix-ui/react-scroll-area": {
+      "optional": true
+    },
+    "@radix-ui/react-select": {
+      "optional": true
+    },
+    "@radix-ui/react-separator": {
+      "optional": true
+    },
+    "@radix-ui/react-slot": {
+      "optional": true
+    },
+    "@radix-ui/react-switch": {
+      "optional": true
+    },
+    "@radix-ui/react-tabs": {
+      "optional": true
+    },
+    "@radix-ui/react-toggle": {
+      "optional": true
+    },
+    "@radix-ui/react-toggle-group": {
+      "optional": true
+    },
+    "@radix-ui/react-tooltip": {
+      "optional": true
+    },
+    "@radix-ui/react-visually-hidden": {
+      "optional": true
+    },
+    "@tailwindcss/typography": {
+      "optional": true
+    },
+    "@tanstack/react-table": {
+      "optional": true
+    },
+    "cmdk": {
+      "optional": true
+    },
+    "cva": {
+      "optional": true
+    },
+    "embla-carousel-react": {
+      "optional": true
+    },
+    "framer-motion": {
+      "optional": true
+    },
+    "input-otp": {
+      "optional": true
+    },
+    "lucide-react": {
+      "optional": true
+    },
+    "merge-refs": {
+      "optional": true
+    },
+    "next": {
+      "optional": true
+    },
+    "react-hook-form": {
+      "optional": true
+    },
+    "react-resizable-panels": {
+      "optional": true
+    },
+    "react-textarea-autosize": {
+      "optional": true
+    },
+    "sonner": {
+      "optional": true
+    },
+    "tailwindcss": {
+      "optional": true
+    },
+    "vaul": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@ark-ui/react": "^5.39.1",
