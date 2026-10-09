@@ -33,7 +33,6 @@
   --color-accent-green-soft: var(--accent-green-soft);
   --color-accent-purple: var(--accent-purple);
   --color-accent-purple-hover: var(--accent-purple-hover);
-  --color-accent-purple-soft: var(--accent-purple-soft);
   --color-accent-cyan: var(--accent-cyan);
   --color-accent-cyan-hover: var(--accent-cyan-hover);
   --color-accent-cyan-soft: var(--accent-cyan-soft);
@@ -348,7 +347,7 @@
   }
 
   .yu-shimmer-agent {
-    color: #b58ad0;
+    color: var(--yu-agent-base);
   }
 
   @supports ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -388,11 +387,11 @@
     .yu-shimmer-agent {
       background-image: linear-gradient(
         100deg,
-        #b58ad0 0%,
-        #b58ad0 38%,
+        var(--yu-agent-base) 0%,
+        var(--yu-agent-base) 38%,
         #f1dcff 50%,
-        #b58ad0 62%,
-        #b58ad0 100%
+        var(--yu-agent-base) 62%,
+        var(--yu-agent-base) 100%
       );
       animation: yu-shimmer 2.8s var(--yu-ease-shimmer) infinite;
     }
@@ -432,7 +431,7 @@
   }
 
   .yu-dot-matrix--agent {
-    --yu-dot-color: #b58ad0;
+    --yu-dot-color: var(--yu-agent-base);
   }
 
   /* Ring order: perimeter clockwise from the top-left, center dot last. */
@@ -647,6 +646,7 @@
     --border-subtle: rgba(232, 228, 216, 0.13);
     --border-default: rgba(232, 228, 216, 0.2);
     --border-strong: rgba(232, 228, 216, 0.32);
+    --border-width: 0.5px;
 
     --text-primary: #f4f1e8;
     --text-strong: #fffdf7;
@@ -668,7 +668,6 @@
 
     --accent-purple: #bf5af2;
     --accent-purple-hover: #cb74f5;
-    --accent-purple-soft: rgba(191, 90, 242, 0.18);
     --accent-purple-border: rgba(191, 90, 242, 0.3);
 
     --accent-cyan: #64d2ff;
@@ -686,11 +685,28 @@
     --accent-red-soft: rgba(255, 105, 97, 0.18);
     --accent-red-border: rgba(255, 105, 97, 0.3);
 
+    --accent-amber: #f0b35a;
+
     --action-primary: var(--accent-gold);
     --action-primary-hover: var(--accent-gold-hover);
     --action-primary-soft: var(--accent-gold-soft);
     --action-primary-border: var(--accent-gold-border);
 
+    /* canonical semantic roles (YuTheme v2 kit vocabulary) */
+    --on-action: var(--text-inverse);
+    --link: var(--accent-cyan);
+    --success: var(--accent-green);
+    --warning: var(--accent-amber);
+    --danger: var(--accent-red);
+    --agent: var(--accent-purple);
+    /* background tint validated against the approved mockup (14%, not 18%) */
+    --agent-soft: rgba(191, 90, 242, 0.14);
+    /* solid text colour for agent-tinted chips */
+    --agent-text: #d9a8f5;
+
+    /* Deprecated: use the canonical roles above (--link, --success, --warning,
+       --danger, --agent, --agent-soft, --agent-text). Kept for consumers that
+       still reference them; scheduled for removal after the website migration. */
     --status-success: var(--accent-green);
     --status-success-hover: var(--accent-green-hover);
     --status-success-soft: var(--accent-green-soft);
@@ -698,7 +714,7 @@
 
     --status-agent: var(--accent-purple);
     --status-agent-hover: var(--accent-purple-hover);
-    --status-agent-soft: var(--accent-purple-soft);
+    --status-agent-soft: var(--agent-soft);
     --status-agent-border: var(--accent-purple-border);
 
     --status-info: var(--accent-cyan);
@@ -755,11 +771,29 @@
     --syntax-bracket-match: rgba(214, 168, 79, 0.18);
     --syntax-find-match: rgba(214, 168, 79, 0.22);
 
+    /* canonical syntax accents (kit vocabulary, softened for long reading) */
+    --yu-syn-keyword: #d9a8f5;
+    --yu-syn-string: #8fd6a0;
+    --yu-syn-number: #e8c07a;
+    --yu-syn-title: #7fdcff;
+    --yu-syn-type: #f0b35a;
+    --yu-syn-comment: #87826f;
+    --yu-syn-attr: #e8c07a;
+    --yu-syn-meta: #9a9488;
+    --yu-syn-deletion: #ff8a84;
+    --yu-syn-addition: #8fd6a0;
+
+    /* type */
+    --font-sans: 'Geist', 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-window: 14px;
+    --radius-panel: 20px;
+    --radius-pill: 999px;
     --transition: 160ms cubic-bezier(0.2, 0, 0, 1);
     --duration-sheet: 220ms;
 
@@ -767,8 +801,21 @@
     --yu-glow-alpha: 0.08;
     --yu-ease: cubic-bezier(0.2, 0, 0, 1);
     --yu-ease-shimmer: cubic-bezier(0.4, 0, 0.2, 1);
+    --yu-fast: 160ms;
     --yu-scrollbar: #2a2926;
     --yu-scrollbar-hover: #3a3935;
+
+    /* effects inputs */
+    --yu-shimmer-base: #9a9488;
+    --yu-shimmer-peak: #fffdf7;
+    --yu-gold-base: #d6a84f;
+    --yu-gold-peak: #f7e0a8;
+    --yu-agent-base: #b58ad0;
+    --yu-agent-peak: #f1dcff;
+
+    /* chart gold: fixed, validated single-series colour (not the action colour) */
+    --yu-chart: #b8862b;
+    --yu-chart-hover: #d6a84f;
 
     --yu-sheen-rest: rgba(222, 220, 209, 0.14);
     --yu-skel-a: #121211;
@@ -903,7 +950,7 @@
 
   .yu-shimmer-agent {
     background: none !important;
-    color: #b58ad0 !important;
+    color: var(--yu-agent-base) !important;
   }
 
   .yu-dot-matrix > span {
