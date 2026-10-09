@@ -397,6 +397,22 @@
     }
   }
 
+  /* BlurImage: pending blur + fade-in on load. Consumer inline styles
+     (opacity, transition) take precedence over these classes. */
+  .yu-blur-image {
+    transition:
+      opacity var(--yu-fast, 160ms) var(--yu-ease, cubic-bezier(0.2, 0, 0, 1)),
+      filter var(--yu-fast, 160ms) var(--yu-ease, cubic-bezier(0.2, 0, 0, 1));
+  }
+  .yu-blur-image--pending {
+    filter: blur(12px);
+    opacity: 0.5;
+  }
+  .yu-blur-image--failed {
+    filter: grayscale(1);
+    opacity: 0.6;
+  }
+
   .yu-skeleton {
     border-radius: 6px;
     background: linear-gradient(
@@ -955,6 +971,11 @@
 
   .yu-dot-matrix > span {
     opacity: 0.35 !important;
+  }
+
+  .yu-blur-image--pending {
+    filter: none !important;
+    opacity: 1 !important;
   }
 
   .yu-lift:hover {

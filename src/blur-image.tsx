@@ -1,79 +1,50 @@
-/**
- * website
- * Copyright (c) Delba de Oliveira
- * Source: https://github.com/delbaoliveira/website/blob/59e6f181ad75751342ceaa8931db4cbcef86b018/ui/BlurImage.tsx
- *
- * Modified by: isyuricunha
- */
-import { cn } from '@isyuricunha/utils'
 import NextImage from 'next/image'
 import { useState } from 'react'
+import { cn } from './cn'
 
-type ImageProps = {
+type BlurImageProps = {
+  /** Extra classes for the rendered image element. */
   imageClassName?: string
+  /** When false, the image renders without the pending blur and fade-in. */
   lazy?: boolean
 } & React.ComponentProps<typeof NextImage>
 
-const BlurImage = (props: ImageProps) => {
-  const {
-    alt,
-    src,
-    className,
-    imageClassName,
-    lazy = true,
-    onLoad,
-    onError,
-    priority,
-    loading,
-    fill,
-    quality,
-    style,
-    ...rest
-  } = props
-  const [isLoading, setIsLoading] = useState(true)
+/**
+ * Image wrapper with a pending blur that fades in when the image finishes
+ * loading. It renders the image element directly, so consumers using `fill`
+ * keep providing their own positioned parent. Consumer inline styles
+ * (opacity, transition) intentionally take precedence over the pending
+ * classes, and the effect is skipped entirely with `lazy={false}`.
+ */
+const BlurImage = (props: BlurImageProps) => {
+  const { alt, className, imageClassName, lazy = true, onLoad, onError, ...rest } = props
+  const [pending, setPending] = useState(Boolean(lazy))
+  const [failed, setFailed] = useState(false)
 
-  const resolvedPriority = priority ?? !lazy
-  const shouldLazyLoad = !resolvedPriority && lazy
-  const resolvedLoading = loading ?? (shouldLazyLoad ? 'lazy' : undefined)
-  const resolvedQuality = quality ?? 100
+  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    setPending(false)
+    onLoad?.(event)
+  }
+
+  const handleError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    setFailed(true)
+    onError?.(event)
+  }
 
   return (
-    <div
+    <NextImage
+      {...rest}
+      alt={alt}
       className={cn(
-        'overflow-hidden',
-        fill && 'relative h-full w-full',
-        isLoading && 'animate-pulse motion-reduce:animate-none',
-        className
+        'yu-blur-image',
+        lazy && pending && !failed && 'yu-blur-image--pending',
+        failed && 'yu-blur-image--failed',
+        className,
+        imageClassName
       )}
-    >
-      <NextImage
-        className={cn(
-          isLoading &&
-            'scale-[1.02] blur-xl grayscale motion-reduce:scale-100 motion-reduce:blur-none motion-reduce:grayscale-0',
-          'motion-reduce:!transition-none',
-          imageClassName
-        )}
-        style={{
-          transition: 'filter 700ms ease, scale 150ms ease',
-          ...style
-        }}
-        src={src}
-        alt={alt}
-        loading={resolvedLoading}
-        priority={resolvedPriority}
-        quality={resolvedQuality}
-        fill={fill}
-        onLoad={(event) => {
-          setIsLoading(false)
-          onLoad?.(event)
-        }}
-        onError={(event) => {
-          setIsLoading(false)
-          onError?.(event)
-        }}
-        {...rest}
-      />
-    </div>
+      onError={handleError}
+      onLoad={handleLoad}
+    />
   )
 }
 
