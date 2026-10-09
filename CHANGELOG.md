@@ -1,11 +1,12 @@
 # @isyuricunha/yutheme
 
-## 0.1.1
+## 0.1.2
 
 First publish executed by the CI pipeline (tag-triggered, OIDC trusted publishing), which validates the GitLab trusted publisher configuration.
 
 ### Fixed
 
+- `publish` job: npm version check no longer breaks the bash parse (the `||` must stay on the same command line).
 - `verify` job no longer fails on every push after a release: `npm publish --dry-run` (which rejects already-published versions) was replaced by `npm pack --dry-run`.
 
 ## 0.1.0
