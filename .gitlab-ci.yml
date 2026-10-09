@@ -28,7 +28,7 @@ verify:
     - pnpm test
     - pnpm build
     - pnpm pack --pack-destination .
-    - npm publish --dry-run --access public
+    - npm pack --dry-run
 
 publish:
   stage: publish
