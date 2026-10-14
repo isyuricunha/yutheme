@@ -484,33 +484,37 @@
     --shadow-control: 0 1px 2px rgb(0 0 0 / 0.18);
     --shadow-sidebar-outline: 0 0 0 1px hsl(var(--sidebar-border));
     --shadow-sidebar-outline-hover: 0 0 0 1px hsl(var(--sidebar-accent));
-    --background: 0 0% 0%;
+    /* shadcn HSL bridge, scoped to the warm default (:root / yu-dark) only.
+       Variants (yu-amoled, yu-graphite, yu-daylight) do not get their own
+       bridge yet: consumers of this file that switch variants keep the
+       warm bridge values. Known limitation, documented for 0.2.0. */
+    --background: 42.9 15.6% 8.8%;
     --foreground: 45 35.3% 93.3%;
-    --card: 60 4.8% 4.1%;
+    --card: 40 19.1% 9.2%;
     --card-foreground: 45 35.3% 93.3%;
-    --popover: 60 2.9% 6.9%;
+    --popover: 42 17.9% 11%;
     --popover-foreground: 45 35.3% 93.3%;
     --primary: 39.6 62.2% 57.5%;
     --primary-foreground: 45 17.4% 9%;
-    --secondary: 60 2.9% 6.9%;
+    --secondary: 42 17.9% 11%;
     --secondary-foreground: 45 35.3% 93.3%;
-    --muted: 60 2.9% 6.9%;
+    --muted: 42 17.9% 11%;
     --muted-foreground: 42 12.3% 68.2%;
-    --ui-accent: 60 4% 9.8%;
+    --ui-accent: 43.6 15.9% 13.5%;
     --ui-accent-foreground: 45 35.3% 93.3%;
     --destructive: 3 100% 69%;
     --destructive-foreground: 45 17.4% 9%;
-    --border: 45 25.8% 87.8% / 0.2;
-    --input: 45 25.8% 87.8% / 0.2;
+    --border: 44.2 31.7% 76.5% / 0.2;
+    --input: 44.2 31.7% 76.5% / 0.2;
     --ring: 39.6 62.2% 57.5%;
     --radius: var(--radius-md);
-    --sidebar-background: 0 0% 0%;
+    --sidebar-background: 42.9 15.6% 8.8%;
     --sidebar-foreground: 45 35.3% 93.3%;
     --sidebar-primary: 39.6 62.2% 57.5%;
     --sidebar-primary-foreground: 45 17.4% 9%;
-    --sidebar-accent: 60 2.9% 6.9%;
+    --sidebar-accent: 42 17.9% 11%;
     --sidebar-accent-foreground: 45 35.3% 93.3%;
-    --sidebar-border: 45 25.8% 87.8% / 0.2;
+    --sidebar-border: 44.2 31.7% 76.5% / 0.2;
     --sidebar-ring: 39.6 62.2% 57.5%;
     --feature-card: inset 0 0 0 0.5px var(--border-subtle), var(--yu-highlight);
   }

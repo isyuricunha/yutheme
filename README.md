@@ -1,6 +1,6 @@
 # @isyuricunha/yutheme
 
-YuTheme is the design system of [isyuricunha](https://yuricunha.com)'s projects: an AMOLED true-black theme with warm ivory text, a gold action accent, and a small motion vocabulary. The theme is plain CSS with zero dependencies; the React components are optional.
+YuTheme is the design system of [isyuricunha](https://yuricunha.com)'s projects: a warm dark theme (canvas `#1a1813`) with warm ivory text, a gold action accent, and a small motion vocabulary. An AMOLED true-black variant is available for OLED screens. The theme is plain CSS with zero dependencies; the React components are optional.
 
 ## Install
 
@@ -11,8 +11,8 @@ pnpm add @isyuricunha/yutheme
 ## Importing
 
 ```css
-/* Theme core: tokens (AMOLED default, graphite variant, optional app-only
-   daylight), base, component classes and effects. Plain CSS, no Tailwind. */
+/* Theme core: tokens (warm dark default, AMOLED and graphite variants, optional
+   app-only daylight), base, component classes and effects. Plain CSS, no Tailwind. */
 @import '@isyuricunha/yutheme/styles';
 ```
 
@@ -27,16 +27,16 @@ import { Button, Badge, Card, Link } from '@isyuricunha/yutheme/server'
 @import '@isyuricunha/yutheme/site';
 ```
 
-The theme switch is set on `<html>`: no attribute (or `data-theme="yu-dark"` / `"yu-amoled"`) for AMOLED true black, `data-theme="yu-graphite"` for the warm graphite variant, and `data-theme="yu-daylight"` for the apps-only light mode. Accent switch for apps: `data-accent="blue|green|violet|coral"`.
+The theme switch is set on `<html>`: no attribute (or `data-theme="yu-dark"`) for the warm dark default (canvas `#1a1813`), `data-theme="yu-amoled"` for the AMOLED true-black variant (canvas `#000000`, the previous default), `data-theme="yu-graphite"` for the warm graphite variant, and `data-theme="yu-daylight"` for the apps-only light mode. Accent switch for apps: `data-accent="blue|green|violet|coral"`.
 
 ## Core tokens
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `--yu-bg-canvas` | `#000000` | AMOLED canvas (default ground) |
-| `--yu-bg-window` / `-surface` / `-panel` | `#0b0b0a` | near-black window surfaces |
-| `--yu-bg-titlebar` / `-input` / `-composer` | `#121211` | titlebar, inputs, composer |
-| `--yu-bg-editor` / `-terminal` | `#10100f` | code surfaces, lifted above the window |
+| `--yu-bg-canvas` | `#1a1813` | warm dark canvas (default ground) |
+| `--yu-bg-window` / `-surface` / `-panel` | `#1c1913` | warm near-black window surfaces |
+| `--yu-bg-titlebar` / `-input` / `-composer` | `#211e17` | titlebar, inputs, composer |
+| `--yu-bg-editor` / `-terminal` | `#1d1b15` | code surfaces, lifted above the window |
 | `--text-primary` | `#f4f1e8` | ivory primary text |
 | `--text-secondary` | `#b8b2a4` | secondary text |
 | `--text-tertiary` | `#9a9488` | hints, labels, shimmer base |
@@ -51,14 +51,14 @@ The theme switch is set on `<html>`: no attribute (or `data-theme="yu-dark"` / `
 | `--radius-window` | `14px` | windows, cards, code blocks |
 | `--yu-ease` | `cubic-bezier(0.2, 0, 0, 1)` | default easing |
 | `--yu-fast` | `160ms` | default fast transition |
-| `--yu-glow-alpha` | `0.08` | focal glow strength on AMOLED |
+| `--yu-glow-alpha` | `0.1` | focal glow strength on the warm ground |
 
 Fonts: Geist and Geist Mono, loaded by the host application (Vercel's [`geist`](https://www.npmjs.com/package/geist) package or self-hosted woff2).
 
 ## Versioning policy
 
-- **Major**: a visual change big enough to alter the identity of existing screens (palette shifts, radius reworks, typography changes, effect vocabulary changes that break existing looks).
-- **Minor**: new tokens, new classes, new components.
+- **Major**: a visual change big enough to alter the identity of existing screens (palette shifts, radius reworks, typography changes, effect vocabulary changes that break existing looks). While the package is pre-1.0 (0.x), this class of change bumps the MINOR number instead (0.x minors are the breaking-change vehicle in semver).
+- **Minor**: new tokens, new classes, new components. (Pre-1.0: also the vehicle for the breaking class above.)
 - **Patch**: fixes and tweaks invisible or near-invisible to existing screens.
 
 ## Credits

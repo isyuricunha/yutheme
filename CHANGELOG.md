@@ -1,5 +1,18 @@
 # @isyuricunha/yutheme
 
+## 0.2.0
+
+### Changed
+
+- **Default ground is now Warm Dark (`#1a1813`) instead of AMOLED true black.** The `:root` / `yu-dark` block carries the warm ladder (v1 hue family, v2 relationships): canvas/sidebar `#1a1813`, window/surface/panel `#1c1913`, editor/terminal `#1d1b15`, modal `#1f1c16`, titlebar/input/composer `#211e17`, hover `#232019`, raised/popover/tooltip `#23211a`, desktop `#25221b`, desktop-soft/chip/input-hover `#28251d`, active `#2d2921`. Borders keep the v2 alpha ladder with the warm ivory tint `rgba(214,204,176,…)`. `--yu-glow-alpha` is now `0.1` on the default (calibrated for the warm ground); skeleton, sheen-rest and scrollbar tokens follow the warm family.
+- **AMOLED true black is now the opt-in variant** `data-theme="yu-amoled"`: a complete, verbatim copy of the previous default block (every token redefined, no inheritance from the warm root). Graphite pins the tokens it used to inherit from the AMOLED root (`--yu-bg-desktop`, `--yu-bg-desktop-soft`, `--yu-sheen-rest`); daylight pins the desktop pair and `--yu-glow-alpha: 0.08`. Their rendered output is unchanged.
+- `site` entry: the shadcn HSL bridge triplets are recomputed from the warm ladder (`--background` `42.9 15.6% 8.8%`, `--card` `40 19.1% 9.2%`, `--popover`/`--secondary`/`--muted`/`--sidebar-accent` `42 17.9% 11%`, `--ui-accent` `43.6 15.9% 13.5%`, border triplets `44.2 31.7% 76.5% / 0.2`). The bridge is scoped to `:root` / `yu-dark` only: consumers of `site.css` that switch variants keep the warm bridge values (documented limitation).
+
+### Notes
+
+- Text ramp, accents, syntax palette, radii, typography, motion, components, animations and the Dot Matrix loader are unchanged.
+- Consumers that hardcode the previous ground need a sync: the shiki theme bg (`#10100f` → `#1d1b15` for the warm editor) is the known example in the website repo.
+
 ## 0.1.3
 
 ### Added
