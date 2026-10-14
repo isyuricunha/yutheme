@@ -448,7 +448,7 @@
     --accent-text: var(--action-primary);
     --accent-border: var(--action-primary-border);
     --syntax-fg: #f4f1e8;
-    --syntax-comment: #87826f;
+    --syntax-comment: #8a8571;
     --syntax-keyword: #d9a8f5;
     --syntax-keyword-alt: #d9a8f5;
     --syntax-string: #8fd6a0;

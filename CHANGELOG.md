@@ -1,6 +1,13 @@
 # @isyuricunha/yutheme
 
+## 0.2.1
+
+### Changed
+
+- Syntax comment colour `--yu-syn-comment` (and the `--syntax-comment` site bridge) moves from `#87826f` to `#8a8571`: the old value measures 4.47:1 on the warm editor `#1d1b15`, just under WCAG AA; `#8a8571` measures 4.65:1 warm and 5.14:1 AMOLED. Single value on both grounds, visually near-identical. Revised by Yuri from the frozen `#87826f` rule after the ChatGPT audit.
+
 ## 0.2.0
+
 
 ### Changed
 
