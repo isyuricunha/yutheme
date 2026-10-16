@@ -1,7 +1,7 @@
 /*
  * YuTheme · core stylesheet (@isyuricunha/yutheme)
  * ---------------------------------------------------------------------------
- * The theme itself: tokens (warm dark default, AMOLED and graphite
+ * The theme itself: tokens (AMOLED default, warm dark and graphite
  * variants, optional app-only daylight), base, component classes and the whole effect
  * vocabulary. Plain CSS, zero dependencies, no Tailwind directives.
  *
@@ -12,18 +12,140 @@
  * text colour and --accent-purple-soft is gone (ambiguous concept).
  *
  * Theme switch on <html>:
- *   (none) or data-theme="yu-dark"    warm dark #1a1813 (brand default)
- *   data-theme="yu-amoled"            AMOLED true black, opt-in
+ *   data-theme="yu-dark"              warm dark #1a1813 (opt-in)
+ *   (none) or data-theme="yu-amoled"  AMOLED true black #000000 (default)
  *   data-theme="yu-graphite"          warm graphite #262624
- *   data-theme="yu-daylight"          APPS ONLY, user-chosen light mode
+ *   data-theme="yu-daylight"          optional user-chosen White mode
  * Accent switch (apps only, action colour): data-accent="blue|green|violet|coral"
  */
 
 /* ============================== TOKENS ============================== */
 
+/* AMOLED true black is the default (:root or explicit yu-amoled). */
 :root,
+[data-theme='yu-amoled'] {
+  color-scheme: dark;
+
+  /* surface ladder: canvas black, everything near-black, structure from
+     0.5px borders + a 1px top highlight (shadows do not show on #000) */
+  --yu-bg-canvas: #000000;
+  --yu-bg-sidebar: #000000;
+  --yu-bg-desktop: #121211;
+  --yu-bg-desktop-soft: #1a1a18;
+  --yu-bg-window: #0b0b0a;
+  --yu-bg-surface: #0b0b0a;
+  --yu-bg-panel: #0b0b0a;
+  --yu-bg-modal: #0f0f0e;
+  --yu-bg-editor: #10100f; /* lifted above the window */
+  --yu-bg-terminal: #10100f;
+  --yu-bg-titlebar: #121211; /* lighter than the window: reads as a bar */
+  --yu-bg-input: #121211;
+  --yu-bg-composer: #121211;
+  --yu-bg-surface-hover: #141413;
+  --yu-bg-surface-raised: #151514;
+  --yu-bg-popover: #151514;
+  --yu-bg-tooltip: #151514;
+  --yu-bg-chip: #1a1a18;
+  --yu-bg-input-hover: #1a1a18;
+  --yu-bg-surface-active: #1f1f1d;
+  --yu-bg-selected-soft: rgba(214, 168, 79, 0.1);
+
+  --border-faint: rgba(232, 228, 216, 0.08);
+  --border-subtle: rgba(232, 228, 216, 0.13);
+  --border-default: rgba(232, 228, 216, 0.2);
+  --border-strong: rgba(232, 228, 216, 0.32);
+  --border-width: 0.5px;
+
+  --text-strong: #fffdf7;
+  --text-primary: #f4f1e8;
+  --text-secondary: #b8b2a4;
+  --text-tertiary: #9a9488;
+  --text-dim: #666157;
+  --text-disabled: #54504a;
+  --text-inverse: #15130f;
+
+  /* semantic accents (canonical, unchanged since v1) */
+  --accent-gold: #d6a84f;
+  --accent-gold-hover: #e0b760;
+  --accent-cyan: #64d2ff;
+  --accent-cyan-hover: #7cd9ff;
+  --accent-green: #31d158;
+  --accent-purple: #bf5af2;
+  --accent-blue: #4daafc;
+  --accent-red: #ff6961;
+  --accent-amber: #f0b35a;
+
+  /* roles: components use these, never raw accents */
+  --action-primary: var(--accent-gold);
+  --action-primary-hover: var(--accent-gold-hover);
+  --on-action: var(--text-inverse);
+  --link: var(--accent-cyan);
+  --success: var(--accent-green);
+  --warning: var(--accent-amber);
+  --danger: var(--accent-red);
+  --agent: var(--accent-purple);
+  /* background tint validated against the approved mockup (14%, not 18%) */
+  --agent-soft: rgba(191, 90, 242, 0.14);
+  /* solid text colour for agent-tinted chips */
+  --agent-text: #d9a8f5;
+
+  /* charts: fixed, validated single-series gold (not the action colour) */
+  --yu-chart: #b8862b;
+  --yu-chart-hover: #d6a84f;
+
+  /* syntax (canonical accents softened for long reading) */
+  --yu-syn-keyword: #d9a8f5;
+  --yu-syn-string: #8fd6a0;
+  --yu-syn-number: #e8c07a;
+  --yu-syn-title: #7fdcff;
+  --yu-syn-type: #f0b35a;
+  --yu-syn-comment: #8a8571;
+  --yu-syn-attr: #e8c07a;
+  --yu-syn-meta: #9a9488;
+  --yu-syn-deletion: #ff8a84;
+  --yu-syn-addition: #8fd6a0;
+
+  /* shape */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-window: 14px;
+  --radius-panel: 20px;
+  --radius-pill: 999px;
+
+  /* depth */
+  --yu-highlight: inset 0 1px 0 rgba(255, 253, 247, 0.05);
+  --shadow-floating: 0 0 0 0.5px var(--border-default), 0 18px 48px rgb(0 0 0 / 0.6);
+  --shadow-tooltip: 0 0 0 0.5px var(--border-default), 0 8px 24px rgb(0 0 0 / 0.5);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --yu-glow-alpha: 0.08;
+
+  /* effects inputs */
+  --yu-shimmer-base: #9a9488;
+  --yu-shimmer-peak: #fffdf7;
+  --yu-gold-base: #d6a84f;
+  --yu-gold-peak: #f7e0a8;
+  --yu-agent-base: #b58ad0;
+  --yu-agent-peak: #f1dcff;
+  --yu-sheen-rest: rgba(222, 220, 209, 0.14);
+  --yu-skel-a: #121211;
+  --yu-skel-b: #1f1f1d;
+
+  /* type + motion */
+  --font-sans: 'Geist', 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --yu-ease: cubic-bezier(0.2, 0, 0, 1);
+  --yu-ease-shimmer: cubic-bezier(0.4, 0, 0.2, 1);
+  --yu-fast: 160ms;
+  --yu-scrollbar: #2a2926;
+  --yu-scrollbar-hover: #3a3935;
+}
+
+
+/* Warm dark is explicitly selected with data-theme="yu-dark". */
 [data-theme='yu-dark'] {
-  /* warm dark: the default ground. Canvas #1a1813, warm near-black
+  /* warm dark: the opt-in warm ground. Canvas #1a1813, warm near-black
      surfaces (v1 hue family, v2 relationships), structure from
      0.5px borders + a 1px top highlight; soft black shadows read
      again on the warm ground and stay only on floating layers. */
@@ -146,127 +268,6 @@
   --yu-scrollbar-hover: #3d392e;
 }
 
-/* AMOLED true black, opt-in: the previous default, kept verbatim for
-   OLED screens that benefit from shut-off pixels. */
-[data-theme='yu-amoled'] {
-  color-scheme: dark;
-
-  /* surface ladder: canvas black, everything near-black, structure from
-     0.5px borders + a 1px top highlight (shadows do not show on #000) */
-  --yu-bg-canvas: #000000;
-  --yu-bg-sidebar: #000000;
-  --yu-bg-desktop: #121211;
-  --yu-bg-desktop-soft: #1a1a18;
-  --yu-bg-window: #0b0b0a;
-  --yu-bg-surface: #0b0b0a;
-  --yu-bg-panel: #0b0b0a;
-  --yu-bg-modal: #0f0f0e;
-  --yu-bg-editor: #10100f; /* lifted above the window */
-  --yu-bg-terminal: #10100f;
-  --yu-bg-titlebar: #121211; /* lighter than the window: reads as a bar */
-  --yu-bg-input: #121211;
-  --yu-bg-composer: #121211;
-  --yu-bg-surface-hover: #141413;
-  --yu-bg-surface-raised: #151514;
-  --yu-bg-popover: #151514;
-  --yu-bg-tooltip: #151514;
-  --yu-bg-chip: #1a1a18;
-  --yu-bg-input-hover: #1a1a18;
-  --yu-bg-surface-active: #1f1f1d;
-  --yu-bg-selected-soft: rgba(214, 168, 79, 0.1);
-
-  --border-faint: rgba(232, 228, 216, 0.08);
-  --border-subtle: rgba(232, 228, 216, 0.13);
-  --border-default: rgba(232, 228, 216, 0.2);
-  --border-strong: rgba(232, 228, 216, 0.32);
-  --border-width: 0.5px;
-
-  --text-strong: #fffdf7;
-  --text-primary: #f4f1e8;
-  --text-secondary: #b8b2a4;
-  --text-tertiary: #9a9488;
-  --text-dim: #666157;
-  --text-disabled: #54504a;
-  --text-inverse: #15130f;
-
-  /* semantic accents (canonical, unchanged since v1) */
-  --accent-gold: #d6a84f;
-  --accent-gold-hover: #e0b760;
-  --accent-cyan: #64d2ff;
-  --accent-cyan-hover: #7cd9ff;
-  --accent-green: #31d158;
-  --accent-purple: #bf5af2;
-  --accent-blue: #4daafc;
-  --accent-red: #ff6961;
-  --accent-amber: #f0b35a;
-
-  /* roles: components use these, never raw accents */
-  --action-primary: var(--accent-gold);
-  --action-primary-hover: var(--accent-gold-hover);
-  --on-action: var(--text-inverse);
-  --link: var(--accent-cyan);
-  --success: var(--accent-green);
-  --warning: var(--accent-amber);
-  --danger: var(--accent-red);
-  --agent: var(--accent-purple);
-  /* background tint validated against the approved mockup (14%, not 18%) */
-  --agent-soft: rgba(191, 90, 242, 0.14);
-  /* solid text colour for agent-tinted chips */
-  --agent-text: #d9a8f5;
-
-  /* charts: fixed, validated single-series gold (not the action colour) */
-  --yu-chart: #b8862b;
-  --yu-chart-hover: #d6a84f;
-
-  /* syntax (canonical accents softened for long reading) */
-  --yu-syn-keyword: #d9a8f5;
-  --yu-syn-string: #8fd6a0;
-  --yu-syn-number: #e8c07a;
-  --yu-syn-title: #7fdcff;
-  --yu-syn-type: #f0b35a;
-  --yu-syn-comment: #8a8571;
-  --yu-syn-attr: #e8c07a;
-  --yu-syn-meta: #9a9488;
-  --yu-syn-deletion: #ff8a84;
-  --yu-syn-addition: #8fd6a0;
-
-  /* shape */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-window: 14px;
-  --radius-panel: 20px;
-  --radius-pill: 999px;
-
-  /* depth */
-  --yu-highlight: inset 0 1px 0 rgba(255, 253, 247, 0.05);
-  --shadow-floating: 0 0 0 0.5px var(--border-default), 0 18px 48px rgb(0 0 0 / 0.6);
-  --shadow-tooltip: 0 0 0 0.5px var(--border-default), 0 8px 24px rgb(0 0 0 / 0.5);
-  --overlay: rgba(0, 0, 0, 0.6);
-  --yu-glow-alpha: 0.08;
-
-  /* effects inputs */
-  --yu-shimmer-base: #9a9488;
-  --yu-shimmer-peak: #fffdf7;
-  --yu-gold-base: #d6a84f;
-  --yu-gold-peak: #f7e0a8;
-  --yu-agent-base: #b58ad0;
-  --yu-agent-peak: #f1dcff;
-  --yu-sheen-rest: rgba(222, 220, 209, 0.14);
-  --yu-skel-a: #121211;
-  --yu-skel-b: #1f1f1d;
-
-  /* type + motion */
-  --font-sans: 'Geist', 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --yu-ease: cubic-bezier(0.2, 0, 0, 1);
-  --yu-ease-shimmer: cubic-bezier(0.4, 0, 0.2, 1);
-  --yu-fast: 160ms;
-  --yu-scrollbar: #2a2926;
-  --yu-scrollbar-hover: #3a3935;
-}
-
 [data-theme='yu-graphite'] {
   --yu-bg-canvas: #262624;
   --yu-bg-sidebar: #1f1e1d;
@@ -309,9 +310,9 @@
   --yu-scrollbar-hover: #5a5852;
 }
 
-/* APPS ONLY. The brand (sites, landing pages, social) is dark only. Offer this
-   only as a user preference in tools people use all day; accents are darkened
-   to keep 4.5:1 on light surfaces. */
+/* Optional White preference. Brand defaults to AMOLED dark; individual products
+   may expose White explicitly (e.g. Vai Brasil!). Accents are darkened
+   to preserve contrast on light surfaces. */
 [data-theme='yu-daylight'] {
   color-scheme: light;
   --yu-bg-canvas: #faf9f5;

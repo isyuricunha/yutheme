@@ -1,5 +1,14 @@
 # @isyuricunha/yutheme
 
+## 0.3.0
+
+### Changed
+
+- **AMOLED true black (`#000000`) is the default YuTheme root palette again**. Warm Dark (`yu-dark`, also called Swarm) is now explicitly opt-in; the original token values are unchanged.
+- `yu-daylight` remains the White option for applications and products that explicitly enable it (including Vai Brasil!).
+- Website CSS bridge defaults to AMOLED and sets distinct shadcn HSL triplets when selecting Swarm, Graphite, or White.
+- Compatibility: existing projects selecting `data-theme="yu-dark"` continue rendering with the same warm tokens. The visual breaking change applies to projects relying on no theme attribute.
+
 ## 0.2.1
 
 ### Changed
