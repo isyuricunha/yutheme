@@ -484,8 +484,7 @@
     --shadow-control: 0 1px 2px rgb(0 0 0 / 0.18);
     --shadow-sidebar-outline: 0 0 0 1px hsl(var(--sidebar-border));
     --shadow-sidebar-outline-hover: 0 0 0 1px hsl(var(--sidebar-accent));
-    /* Legacy warm HSL values, followed by canonical theme-specific
-       overrides after this block (AMOLED default, Swarm, Graphite, White). */
+    /* Legacy HSL bridge values, followed by palette-specific overrides below. */
     --background: 42.9 15.6% 8.8%;
     --foreground: 45 35.3% 93.3%;
     --card: 40 19.1% 9.2%;
@@ -518,9 +517,8 @@
   }
 }
 
-/* YuTheme 0.3: keep the shadcn HSL bridge in step with the selected palette. */
+/* Theme-specific HSL bridge; Dark is the no-attribute default. */
 @layer base {
-  :root,
   [data-theme='yu-amoled'] {
     --background: 0 0% 0%;
     --card: 60 5% 4.1%;
@@ -534,18 +532,37 @@
     --input: 45 26% 88% / 0.2;
     --sidebar-border: 45 26% 88% / 0.2;
   }
+  :root:not([data-theme]),
   [data-theme='yu-dark'] {
-    --background: 42.9 15.6% 8.8%;
-    --card: 40 19.1% 9.2%;
-    --popover: 42 17.9% 11%;
-    --secondary: 42 17.9% 11%;
-    --muted: 42 17.9% 11%;
-    --ui-accent: 43.6 15.9% 13.5%;
-    --sidebar-background: 42.9 15.6% 8.8%;
-    --sidebar-accent: 42 17.9% 11%;
-    --border: 44.2 31.7% 76.5% / 0.2;
-    --input: 44.2 31.7% 76.5% / 0.2;
-    --sidebar-border: 44.2 31.7% 76.5% / 0.2;
+    --background: 216 9.8% 10%;
+    --foreground: 40 20.7% 88.6%;
+    --card: 210 11.8% 6.7%;
+    --card-foreground: 40 20.7% 88.6%;
+    --popover: 210 11.8% 6.7%;
+    --popover-foreground: 40 20.7% 88.6%;
+    --primary: 172.7 50.4% 51.8%;
+    --primary-foreground: 210 11.8% 6.7%;
+    --secondary: 205.7 11.1% 12.4%;
+    --secondary-foreground: 40 20.7% 88.6%;
+    --muted: 205.7 11.1% 12.4%;
+    --muted-foreground: 196.4 7.2% 70%;
+    --ui-accent: 206.7 11.7% 15.1%;
+    --ui-accent-foreground: 40 20.7% 88.6%;
+    --border: 210 9.1% 25.9%;
+    --input: 210 9.1% 25.9%;
+    --ring: 172.7 50.4% 51.8%;
+    --sidebar-background: 210 11.8% 6.7%;
+    --sidebar-foreground: 40 20.7% 88.6%;
+    --sidebar-primary: 172.7 50.4% 51.8%;
+    --sidebar-primary-foreground: 210 11.8% 6.7%;
+    --sidebar-accent: 205.7 11.1% 12.4%;
+    --sidebar-accent-foreground: 40 20.7% 88.6%;
+    --sidebar-border: 210 9.1% 25.9%;
+    --sidebar-ring: 172.7 50.4% 51.8%;
+    --action-primary-soft: rgba(70, 194, 179, 0.18);
+    --action-primary-border: rgba(70, 194, 179, 0.3);
+    --syntax-fg: var(--text-primary);
+    --syntax-comment: var(--yu-syn-comment);
   }
   [data-theme='yu-graphite'] {
     --background: 60 2% 14.5%;
