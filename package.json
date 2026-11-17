@@ -28,7 +28,11 @@
     },
     "./styles": "./styles/yutheme.css",
     "./styles/*": "./styles/*",
-    "./site": "./styles/site.css"
+    "./site": "./styles/site.css",
+    "./effects/starfield": {
+      "types": "./dist/effects/starfield.d.ts",
+      "import": "./dist/effects/starfield.js"
+    }
   },
   "files": [
     "dist",

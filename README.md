@@ -27,6 +27,48 @@ import { Button, Badge, Card, Link } from '@isyuricunha/yutheme/server'
 @import '@isyuricunha/yutheme/site';
 ```
 
+## Optional Starfield Depth background
+
+Starfield Depth is **opt-in** and only loaded when imported from its own
+entry point. It does not run when the CSS theme is loaded and does not require
+React or additional dependencies. Animation behavior matches the original
+Starfield Depth timing: 180 stars, fixed movement per rendered frame and a
+0.72-alpha trail. The browser's `requestAnimationFrame` determines frame
+cadence; there is no fixed-duration animation.
+
+```ts
+import { mountStarfieldDepth } from '@isyuricunha/yutheme/effects/starfield'
+
+// Call on the client after the background layer exists.
+const layer = document.getElementById('background-layer')
+if (layer) {
+  const dispose = mountStarfieldDepth(layer)
+  // Call dispose() on component unmount or when the effect is disabled.
+}
+```
+
+Give the decorative layer its own stacking context and put app content above it:
+
+```css
+#background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#app-root { position: relative; z-index: 1; }
+```
+
+The app owns the layer, toggling, and cleanup. For optional customization,
+set inherited CSS properties: `--yu-starfield-color`,
+`--yu-starfield-intensity`, `--yu-starfield-size` and
+`--yu-starfield-speed` (the last three default to `1`). The effect
+takes its backdrop and default star color from `--yu-bg-canvas` and
+`--text-primary`. It renders a still frame under
+`prefers-reduced-motion: reduce`, and animation stops when disposed.
+Do not use the same layer for two independently managed effect instances.
+
 The theme switch is set on `<html>`: no attribute (or `data-theme="yu-dark"`) selects **Dark** (canvas `#17191c`), `data-theme="yu-amoled"` selects AMOLED true black (`#000000`), `data-theme="yu-graphite"` selects Graphite, and `data-theme="yu-daylight"` selects White. Both `yu-dark` and the no-attribute default have a new appearance; no theme selector has been removed. Apps can also set `data-accent="blue|green|violet|coral"`.
 
 ## Core tokens
