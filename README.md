@@ -1,6 +1,6 @@
 # @isyuricunha/yutheme
 
-YuTheme is the design system of [isyuricunha](https://yuricunha.com)'s projects: an AMOLED true-black theme (default canvas `#000000`) with warm ivory text, a gold action accent, and a small motion vocabulary. Swarm (`#1a1813`), Graphite and White are supported opt-in palettes. The theme is plain CSS with zero dependencies; the React components are optional.
+YuTheme is the design system of [isyuricunha](https://yuricunha.com)'s projects. Its default **Dark** theme uses a charcoal canvas (`#17191c`), deep panels (`#0f1113`), ivory text (`#e8e4dc`), and teal actions (`#46c2b3`). AMOLED true black (`#000000`), Graphite and White remain optional variants. The theme core is plain CSS with zero dependencies; the React components are optional.
 
 ## Install
 
@@ -11,8 +11,8 @@ pnpm add @isyuricunha/yutheme
 ## Importing
 
 ```css
-/* Theme core: tokens (AMOLED default, warm Swarm and graphite variants, optional
-   daylight), base, component classes and effects. Plain CSS, no Tailwind. */
+/* Theme core: Dark default, optional AMOLED, Graphite and White variants;
+   base, component classes and effects. Plain CSS, no Tailwind. */
 @import '@isyuricunha/yutheme/styles';
 ```
 
@@ -27,31 +27,31 @@ import { Button, Badge, Card, Link } from '@isyuricunha/yutheme/server'
 @import '@isyuricunha/yutheme/site';
 ```
 
-The theme switch is set on `<html>`: no attribute (or `data-theme="yu-amoled"`) for the **AMOLED black default** (canvas `#000000`), `data-theme="yu-dark"` for Swarm/Warm Dark (canvas `#1a1813`), `data-theme="yu-graphite"` for Graphite, and `data-theme="yu-daylight"` for White (an explicit user option, as in Vai Brasil!). Accent switch for apps: `data-accent="blue|green|violet|coral"`.
+The theme switch is set on `<html>`: no attribute (or `data-theme="yu-dark"`) selects **Dark** (canvas `#17191c`), `data-theme="yu-amoled"` selects AMOLED true black (`#000000`), `data-theme="yu-graphite"` selects Graphite, and `data-theme="yu-daylight"` selects White. Both `yu-dark` and the no-attribute default have a new appearance; no theme selector has been removed. Apps can also set `data-accent="blue|green|violet|coral"`.
 
 ## Core tokens
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `--yu-bg-canvas` | `#000000` | AMOLED black canvas (default ground) |
-| `--yu-bg-window` / `-surface` / `-panel` | `#0b0b0a` | default near-black window surfaces |
-| `--yu-bg-titlebar` / `-input` / `-composer` | `#121211` | default titlebar, inputs, composer |
-| `--yu-bg-editor` / `-terminal` | `#10100f` | default code surfaces, lifted above the window |
-| `--text-primary` | `#f4f1e8` | ivory primary text |
-| `--text-secondary` | `#b8b2a4` | secondary text |
-| `--text-tertiary` | `#9a9488` | hints, labels, shimmer base |
-| `--accent-gold` | `#d6a84f` | action + one accent word |
-| `--accent-cyan` | `#64d2ff` | links and info |
+| `--yu-bg-canvas` | `#17191c` | default Dark canvas |
+| `--yu-bg-window` / `-surface` / `-panel` | `#0f1113` | default Dark surfaces |
+| `--yu-bg-titlebar` / `-input` / `-composer` | `#1c2023` | default Dark raised surfaces |
+| `--yu-bg-editor` / `-terminal` | `#101214` | default Dark code surfaces |
+| `--text-primary` | `#e8e4dc` | default ivory primary text |
+| `--text-secondary` | `#adb5b8` | default secondary text |
+| `--text-tertiary` | `#8d989f` | default hints and labels |
+| `--accent-teal` | `#46c2b3` | default primary action |
+| `--accent-cyan` | `#64d2ff` | optional blue/info accent |
 | `--accent-green` | `#31d158` | success |
 | `--accent-red` | `#ff6961` | danger |
 | `--accent-purple` | `#bf5af2` | agent states |
 | `--agent-text` | `#d9a8f5` | solid text colour on agent-tinted chips |
 | `--agent-soft` | `rgba(191,90,242,0.14)` | agent chip background tint (mockup-validated) |
-| `--yu-chart` | `#b8862b` | validated chart gold (never the action colour) |
+| `--yu-chart` | `#32998e` | default Dark chart accent |
 | `--radius-window` | `14px` | windows, cards, code blocks |
 | `--yu-ease` | `cubic-bezier(0.2, 0, 0, 1)` | default easing |
 | `--yu-fast` | `160ms` | default fast transition |
-| `--yu-glow-alpha` | `0.08` | focal glow strength on the AMOLED ground |
+| `--yu-glow-alpha` | `0.08` | default Dark glow strength |
 
 Fonts: Geist and Geist Mono, loaded by the host application (Vercel's [`geist`](https://www.npmjs.com/package/geist) package or self-hosted woff2).
 

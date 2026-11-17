@@ -1,5 +1,14 @@
 # @isyuricunha/yutheme
 
+## Unreleased
+
+### Changed
+
+- **Dark (`yu-dark`)** now uses charcoal and teal: canvas `#17191c`, panels `#0f1113`, borders `#3c4248`, primary action `#46c2b3`, and text `#e8e4dc`.
+- Dark is now the no-attribute default. `yu-amoled` retains its true-black palette and gold actions; Graphite and White keep their prior palettes.
+- The HSL bridge follows the Dark palette for both implicit and explicit selection.
+- **Compatibility:** `yu-dark` consumers and unthemed roots change appearance. No theme selector or component API was removed. Publish as a 0.x minor release; this change does not publish a release.
+
 ## 0.3.0
 
 ### Changed

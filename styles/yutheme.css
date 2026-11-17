@@ -1,7 +1,7 @@
 /*
  * YuTheme · core stylesheet (@isyuricunha/yutheme)
  * ---------------------------------------------------------------------------
- * The theme itself: tokens (AMOLED default, warm dark and graphite
+ * The theme itself: tokens (Dark default, optional AMOLED and graphite
  * variants, optional app-only daylight), base, component classes and the whole effect
  * vocabulary. Plain CSS, zero dependencies, no Tailwind directives.
  *
@@ -12,8 +12,8 @@
  * text colour and --accent-purple-soft is gone (ambiguous concept).
  *
  * Theme switch on <html>:
- *   data-theme="yu-dark"              warm dark #1a1813 (opt-in)
- *   (none) or data-theme="yu-amoled"  AMOLED true black #000000 (default)
+ *   (none) or data-theme="yu-dark"    Dark #17191c (default)
+ *   data-theme="yu-amoled"            AMOLED black #000000 (opt-in)
  *   data-theme="yu-graphite"          warm graphite #262624
  *   data-theme="yu-daylight"          optional user-chosen White mode
  * Accent switch (apps only, action colour): data-accent="blue|green|violet|coral"
@@ -21,7 +21,8 @@
 
 /* ============================== TOKENS ============================== */
 
-/* AMOLED true black is the default (:root or explicit yu-amoled). */
+/* AMOLED values are the fallback and explicit true-black option.
+ * The unthemed root is overridden by the Dark block below. */
 :root,
 [data-theme='yu-amoled'] {
   color-scheme: dark;
@@ -143,56 +144,54 @@
 }
 
 
-/* Warm dark is explicitly selected with data-theme="yu-dark". */
+/* Default Dark palette; explicit AMOLED retains its own tokens. */
+:root:not([data-theme]),
 [data-theme='yu-dark'] {
-  /* warm dark: the opt-in warm ground. Canvas #1a1813, warm near-black
-     surfaces (v1 hue family, v2 relationships), structure from
-     0.5px borders + a 1px top highlight; soft black shadows read
-     again on the warm ground and stay only on floating layers. */
+  /* Default charcoal palette, teal action and ivory text. */
   color-scheme: dark;
 
-  /* surface ladder: warm canvas, everything a warm step above it,
-     structure from 0.5px borders + a 1px top highlight; the floating
-     layers also carry soft black shadows, which read on the warm ground */
-  --yu-bg-canvas: #1a1813;
-  --yu-bg-sidebar: #1a1813;
-  --yu-bg-desktop: #25221b;
-  --yu-bg-desktop-soft: #28251d;
-  --yu-bg-window: #1c1913;
-  --yu-bg-surface: #1c1913;
-  --yu-bg-panel: #1c1913;
-  --yu-bg-modal: #1f1c16;
-  --yu-bg-editor: #1d1b15; /* lifted above the window */
-  --yu-bg-terminal: #1d1b15;
-  --yu-bg-titlebar: #211e17; /* lighter than the window: reads as a bar */
-  --yu-bg-input: #211e17;
-  --yu-bg-composer: #211e17;
-  --yu-bg-surface-hover: #232019;
-  --yu-bg-surface-raised: #23211a;
-  --yu-bg-popover: #23211a;
-  --yu-bg-tooltip: #23211a;
-  --yu-bg-chip: #28251d;
-  --yu-bg-input-hover: #28251d;
-  --yu-bg-surface-active: #2d2921;
-  --yu-bg-selected-soft: rgba(214, 168, 79, 0.1);
+  /* Charcoal canvas, deeper panels and raised controls. */
+  --yu-bg-canvas: #17191c;
+  --yu-bg-sidebar: #0f1113;
+  --yu-bg-desktop: #17191c;
+  --yu-bg-desktop-soft: #1c2023;
+  --yu-bg-window: #0f1113;
+  --yu-bg-surface: #0f1113;
+  --yu-bg-panel: #0f1113;
+  --yu-bg-modal: #1c2023;
+  --yu-bg-editor: #101214; /* code surface */
+  --yu-bg-terminal: #101214;
+  --yu-bg-titlebar: #1c2023; /* titlebar surface */
+  --yu-bg-input: #1c2023;
+  --yu-bg-composer: #1c2023;
+  --yu-bg-surface-hover: #22272b;
+  --yu-bg-surface-raised: #22272b;
+  --yu-bg-popover: #22272b;
+  --yu-bg-tooltip: #22272b;
+  --yu-bg-chip: #242a2f;
+  --yu-bg-input-hover: #242a2f;
+  --yu-bg-surface-active: #2d3439;
+  --yu-bg-selected-soft: rgba(70, 194, 179, 0.12);
 
-  --border-faint: rgba(214, 204, 176, 0.08);
-  --border-subtle: rgba(214, 204, 176, 0.13);
-  --border-default: rgba(214, 204, 176, 0.2);
-  --border-strong: rgba(214, 204, 176, 0.32);
+  --border-faint: rgba(60, 66, 72, 0.45);
+  --border-subtle: rgba(60, 66, 72, 0.7);
+  --border-default: #3c4248;
+  --border-strong: #586168;
   --border-width: 0.5px;
 
-  --text-strong: #fffdf7;
-  --text-primary: #f4f1e8;
-  --text-secondary: #b8b2a4;
-  --text-tertiary: #9a9488;
-  --text-dim: #666157;
-  --text-disabled: #54504a;
-  --text-inverse: #15130f;
+  --text-strong: #f7f4ed;
+  --text-primary: #e8e4dc;
+  --text-secondary: #adb5b8;
+  --text-tertiary: #8d989f;
+  --text-dim: #727d83;
+  --text-disabled: #5c666c;
+  --text-inverse: #0f1113;
 
-  /* semantic accents (canonical, unchanged since v1) */
+  /* Named semantic accents are retained for consumers. */
   --accent-gold: #d6a84f;
   --accent-gold-hover: #e0b760;
+  --accent-teal: #46c2b3;
+  --accent-teal-hover: #63d4c7;
   --accent-cyan: #64d2ff;
   --accent-cyan-hover: #7cd9ff;
   --accent-green: #31d158;
@@ -202,10 +201,10 @@
   --accent-amber: #f0b35a;
 
   /* roles: components use these, never raw accents */
-  --action-primary: var(--accent-gold);
-  --action-primary-hover: var(--accent-gold-hover);
+  --action-primary: var(--accent-teal);
+  --action-primary-hover: var(--accent-teal-hover);
   --on-action: var(--text-inverse);
-  --link: var(--accent-cyan);
+  --link: var(--accent-teal-hover);
   --success: var(--accent-green);
   --warning: var(--accent-amber);
   --danger: var(--accent-red);
@@ -215,9 +214,9 @@
   /* solid text colour for agent-tinted chips */
   --agent-text: #d9a8f5;
 
-  /* charts: fixed, validated single-series gold (not the action colour) */
-  --yu-chart: #b8862b;
-  --yu-chart-hover: #d6a84f;
+  /* Chart accent follows the selected palette. */
+  --yu-chart: #32998e;
+  --yu-chart-hover: #46c2b3;
 
   /* syntax (canonical accents softened for long reading) */
   --yu-syn-keyword: #d9a8f5;
@@ -241,22 +240,22 @@
   --radius-pill: 999px;
 
   /* depth */
-  --yu-highlight: inset 0 1px 0 rgba(255, 253, 247, 0.05);
+  --yu-highlight: inset 0 1px 0 rgba(232, 228, 220, 0.04);
   --shadow-floating: 0 0 0 0.5px var(--border-default), 0 18px 48px rgb(0 0 0 / 0.6);
   --shadow-tooltip: 0 0 0 0.5px var(--border-default), 0 8px 24px rgb(0 0 0 / 0.5);
   --overlay: rgba(0, 0, 0, 0.6);
-  --yu-glow-alpha: 0.1;
+  --yu-glow-alpha: 0.08;
 
   /* effects inputs */
-  --yu-shimmer-base: #9a9488;
-  --yu-shimmer-peak: #fffdf7;
+  --yu-shimmer-base: #8d989f;
+  --yu-shimmer-peak: #e8e4dc;
   --yu-gold-base: #d6a84f;
   --yu-gold-peak: #f7e0a8;
   --yu-agent-base: #b58ad0;
   --yu-agent-peak: #f1dcff;
-  --yu-sheen-rest: rgba(214, 204, 176, 0.14);
-  --yu-skel-a: #211e17;
-  --yu-skel-b: #2d2921;
+  --yu-sheen-rest: rgba(232, 228, 220, 0.12);
+  --yu-skel-a: #1c2023;
+  --yu-skel-b: #2d3439;
 
   /* type + motion */
   --font-sans: 'Geist', 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -264,8 +263,8 @@
   --yu-ease: cubic-bezier(0.2, 0, 0, 1);
   --yu-ease-shimmer: cubic-bezier(0.4, 0, 0.2, 1);
   --yu-fast: 160ms;
-  --yu-scrollbar: #2c2920;
-  --yu-scrollbar-hover: #3d392e;
+  --yu-scrollbar: #3c4248;
+  --yu-scrollbar-hover: #586168;
 }
 
 [data-theme='yu-graphite'] {
@@ -310,7 +309,7 @@
   --yu-scrollbar-hover: #5a5852;
 }
 
-/* Optional White preference. Brand defaults to AMOLED dark; individual products
+/* Optional White preference. Brand defaults to Dark; individual products
    may expose White explicitly (e.g. Vai Brasil!). Accents are darkened
    to preserve contrast on light surfaces. */
 [data-theme='yu-daylight'] {
@@ -384,7 +383,7 @@
   --yu-scrollbar-hover: #bfbab0;
 }
 
-/* action-colour presets (apps only; the brand action is gold) */
+/* action-colour presets (apps only; the default Dark action is teal) */
 [data-accent='blue'] { --action-primary: var(--accent-cyan); --action-primary-hover: var(--accent-cyan-hover, var(--accent-cyan)); }
 [data-accent='green'] { --action-primary: var(--accent-green); --action-primary-hover: var(--accent-green); }
 [data-accent='violet'] { --action-primary: var(--accent-purple); --action-primary-hover: var(--accent-purple); }
