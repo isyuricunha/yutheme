@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Added
+
+- Opt-in `@isyuricunha/yutheme/effects/starfield` entry point with the
+  original Starfield Depth animation cadence, lifecycle cleanup, independent
+  background layer, and reduced-motion support. No automatic theme activation
+  and no additional runtime dependencies.
+
 ### Changed
 
 - **Dark (`yu-dark`)** now uses charcoal and teal: canvas `#17191c`, panels `#0f1113`, borders `#3c4248`, primary action `#46c2b3`, and text `#e8e4dc`.
